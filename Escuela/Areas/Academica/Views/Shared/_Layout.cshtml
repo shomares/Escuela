@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Escuela", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    @if (User.IsInRole("ACADEMICA_INSCRIPCION")|| User.IsInRole("ACADEMICA_CALIFICACIONES"))
+                    {
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Escolar <span class="caret"></span></a>
+
+                            <ul class="dropdown-menu">
+                                @if (User.IsInRole("ACADEMICA_INSCRIPCION"))
+                                {
+                                    <li>@Html.ActionLink("Alumnos", "Index", "Alumno", new { area = "Academica" }, null)</li>
+                                    <li>@Html.ActionLink("Profesores", "Index", "Profesor", new { area = "Academica" }, null)</li>
+                                    <li role="separator" class="divider"></li>
+                                    <li>@Html.ActionLink("Asignación de materias a profesores", "Index", "MateriaProfesor", new { area = "Academica" }, null)</li>
+                                    <li>@Html.ActionLink("Inscripción de materias", "Index", "AlumnoMateria", new { area = "Academica" }, null)</li>
+                                }
+                                @if (User.IsInRole("ACADEMICA_CALIFICACIONES"))
+                                {
+
+                                    <li>@Html.ActionLink("Calificaciones", "Index", "Calificacion", new { area = "Academica" }, null)</li>
+                                }
+                            </ul>
+                        </li>
+                    }
+                    @if(User.IsInRole("ACADEMICA_INSCRIPCION") || User.IsInRole("CATALOGOS"))
+                    {
+
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Catalogos <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                @if (User.IsInRole("ACADEMICA_INSCRIPCION") || User.IsInRole("CATALOGOS"))
+                                {
+
+                                    <li>@Html.ActionLink("Asignaturas", "Index", "Materias", new { area = "Catalogos" }, null)</li>
+                                }
+                                @if(User.IsInRole("CATALOGOS"))
+                                {
+
+                                    <li>@Html.ActionLink("Sexos", "Index", "Sexo", new { area = "Catalogos" }, null)</li>
+                                }
+                            </ul>
+                        </li>
+                    }
+                    @if (User.IsInRole("SEGURIDAD"))
+                    {
+
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Seguridad <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Roles", "Index", "Roles", new { area = "Seguridad" }, null)</li>
+                                <li>@Html.ActionLink("Usuarios", "Index", "Usuarios", new { area = "Seguridad" }, null)</li>
+                            </ul>
+                        </li>
+                    }
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li>@Html.ActionLink("Cerrar Sesión", "Close", "Sesion", new { area = "Seguridad" }, null)</li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

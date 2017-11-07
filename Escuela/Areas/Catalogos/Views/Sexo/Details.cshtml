@@ -1,0 +1,26 @@
+﻿@model Escuela.Types.Sexo
+
+@{
+    ViewBag.Title = "Editar";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Sexo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.descripcion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Editar", new { id = Model.idSexo }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

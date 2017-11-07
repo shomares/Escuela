@@ -1,0 +1,42 @@
+﻿@model Escuela.Types.MateriaProfesor
+
+@{
+    ViewBag.Title = "Editar";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>MateriaProfesor</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.periodo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.periodo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Materia.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Materia.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Profesor.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Profesor.nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Editar", new { id = Model.idMateriaProfesor }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

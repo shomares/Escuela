@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Escuela.Types.Alumno>
+
+@{
+    ViewBag.Title = "Alumno";
+}
+
+<h2>Alumnos</h2>
+
+<p>
+    @Html.ActionLink("Nuevo", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.apellidoPaterno)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.apellidoMaterno)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fechaNacimiento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sexo.descripcion)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.apellidoPaterno)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.apellidoMaterno)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fechaNacimiento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sexo.descripcion)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.boleta }) |
+            @Html.ActionLink("Ver", "Details", new { id=item.boleta }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.boleta })
+        </td>
+    </tr>
+}
+
+</table>

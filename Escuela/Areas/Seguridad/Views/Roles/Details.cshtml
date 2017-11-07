@@ -1,0 +1,34 @@
+﻿@model Escuela.Types.secRol
+
+@{
+    ViewBag.Title = "Editar";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>secRol</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.descripcion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Editar", new { id = Model.idsecRol }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

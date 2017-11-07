@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Escuela.Types.AlumnoMateria>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Alumnos-Materias</h2>
+
+<p>
+    @Html.ActionLink("Nuevo", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Alumno.nombre)
+        </th>
+        <th>
+            Materia
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @($"{item.Alumno.nombre} {item.Alumno.apellidoPaterno} {item.Alumno.apellidoMaterno}")
+        </td>
+        <td>
+           @(item.MateriaProfesor.Materia.nombre + "/" + item.MateriaProfesor.Profesor.nombre + " " + item.MateriaProfesor.Profesor.apellidoPaterno + " " + item.MateriaProfesor.Profesor.apellidoMaterno )
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.idAlumnoMateria }) |
+            @Html.ActionLink("Details", "Details", new { id=item.idAlumnoMateria }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.idAlumnoMateria })
+        </td>
+    </tr>
+}
+
+</table>

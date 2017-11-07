@@ -1,0 +1,56 @@
+﻿@model Escuela.Types.Calificacion
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Borrar</h2>
+
+<h3>¿Desea borrar el elemento?</h3>
+<div>
+    <h4>Calificacion</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Primer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Primer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Segunda)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Segunda)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tercera)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tercera)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AlumnoMateria.Alumno_boleta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AlumnoMateria.Alumno_boleta)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

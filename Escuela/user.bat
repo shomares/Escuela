@@ -1,0 +1,1 @@
+net user /add user1 prueb@12
